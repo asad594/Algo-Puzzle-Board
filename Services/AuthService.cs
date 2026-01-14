@@ -1,66 +1,47 @@
-using System.Text.Json;
+using AlgoPuzzleBoard.MVC.Data;
 using AlgoPuzzleBoard.MVC.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace AlgoPuzzleBoard.MVC.Services
 {
     public class AuthService
     {
-        // Using the specific path requested by the user
-        private readonly string _filePath = @"C:\Users\RB Tech\Desktop\users.txt";
+        private readonly ApplicationDbContext _context;
 
-        public AuthService()
+        public AuthService(ApplicationDbContext context)
         {
-            // Ensure file exists
-            if (!File.Exists(_filePath))
-            {
-                File.WriteAllText(_filePath, "[]");
-            }
+            _context = context;
         }
 
         public bool ValidateUser(string username, string password)
         {
-            var users = GetUsers();
-            var user = users.FirstOrDefault(u => u.Username.Equals(username, StringComparison.OrdinalIgnoreCase));
+            var user = _context.Users.FirstOrDefault(u => u.Username == username);
             
             if (user == null) return false;
             
-            // In a real app, use hashing. Here we compare plain text as requested for "simple" storage.
+            // In a real app, use hashing (BCrypt/Argon2). 
+            // Comparing plain text as requested for implementation simplicity unless requested otherwise.
             return user.Password == password;
         }
 
         public bool UserExists(string username)
         {
-            var users = GetUsers();
-            return users.Any(u => u.Username.Equals(username, StringComparison.OrdinalIgnoreCase));
+            return _context.Users.Any(u => u.Username == username);
         }
 
         public void RegisterUser(string username, string password)
         {
-            var users = GetUsers();
-            users.Add(new User { Username = username, Password = password });
-            SaveUsers(users);
-        }
+            if (UserExists(username)) return;
 
-        private List<User> GetUsers()
-        {
-            if (!File.Exists(_filePath)) return new List<User>();
+            var user = new User 
+            { 
+                Username = username, 
+                Password = password,
+                CreatedAt = DateTime.UtcNow
+            };
 
-            try
-            {
-                var json = File.ReadAllText(_filePath);
-                if (string.IsNullOrWhiteSpace(json)) return new List<User>();
-                return JsonSerializer.Deserialize<List<User>>(json) ?? new List<User>();
-            }
-            catch
-            {
-                return new List<User>();
-            }
-        }
-
-        private void SaveUsers(List<User> users)
-        {
-            var json = JsonSerializer.Serialize(users, new JsonSerializerOptions { WriteIndented = true });
-            File.WriteAllText(_filePath, json);
+            _context.Users.Add(user);
+            _context.SaveChanges();
         }
     }
 }
