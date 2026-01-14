@@ -16,6 +16,15 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 
 // Change to Scoped because DbContext is Scoped
 builder.Services.AddScoped<AuthService>();
+builder.Services.AddScoped<KruskalService>();
+builder.Services.AddScoped<PrimService>();
+builder.Services.AddScoped<BFSService>();
+builder.Services.AddScoped<DFSService>();
+builder.Services.AddScoped<BFSGraphService>();
+builder.Services.AddScoped<DFSGraphService>();
+builder.Services.AddScoped<HeapService>();
+builder.Services.AddScoped<BSTService>();
+builder.Services.AddScoped<ChatService>();
 
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
     .AddCookie(options =>
