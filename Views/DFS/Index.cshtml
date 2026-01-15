@@ -88,19 +88,34 @@
                  <div id="statusText" style="margin-bottom: 1rem; font-size: 0.875rem; color: #cbd5e1; min-height: 3rem; background: rgba(0,0,0,0.2); padding: 0.5rem; border-radius: 0.5rem;">Ready to generate BST.</div>
             </div>
 
-            <div style="border-top: 1px solid rgba(255, 255, 255, 0.1); padding-top: 1.5rem; margin-top: 1rem;">
-                <h3 style="font-size: 1.125rem; font-weight: bold; color: white; margin-bottom: 1rem;">Complexity Analysis</h3>
-                <div style="margin-bottom: 1rem;">
-                    <p style="color: #94a3b8; font-size: 0.75rem;">Time: <span style="color: #4ade80; font-family: monospace;">O(N)</span></p>
-                    <p style="color: #94a3b8; font-size: 0.75rem;">Space: <span style="color: #fca5a5; font-family: monospace;">O(H)</span> (Stack depth)</p>
-                </div>
-                <h3 style="font-size: 1.125rem; font-weight: bold; color: white; margin-bottom: 0.5rem;">How it works</h3>
-                <p style="color: #94a3b8; font-size: 0.875rem; margin-bottom: 1rem; line-height: 1.5;">DFS explores as far as possible along each branch before backtracking. There are three main ways to visit nodes:</p>
+            <div style="border-top: 1px solid rgba(255, 255, 255, 0.1); padding-top: 1rem; margin-top: 1rem;">
+                <h3 style="font-size: 1.125rem; font-weight: 600; color: white; margin-bottom: 1rem;">Complexity Analysis</h3>
                 
+                <div style="margin-bottom: 1.5rem;">
+                    <div style="margin-bottom: 1rem;">
+                        <p style="color: #94a3b8; font-size: 0.875rem; margin-bottom: 0.5rem;">Time Complexity:</p>
+                        <div style="display: inline-block; background: rgba(139, 92, 246, 0.2); border: 1px solid rgba(139, 92, 246, 0.5); color: #e9d5ff; padding: 0.5rem 1rem; border-radius: 0.5rem; font-family: monospace; font-weight: 600; letter-spacing: 0.05em;">
+                            O(N)
+                        </div>
+                    </div>
+                    
+                    <div style="margin-bottom: 1rem;">
+                        <p style="color: #94a3b8; font-size: 0.875rem; margin-bottom: 0.5rem;">Space Complexity:</p>
+                        <div style="display: inline-block; background: rgba(244, 63, 94, 0.2); border: 1px solid rgba(244, 63, 94, 0.5); color: #fecdd3; padding: 0.5rem 1rem; border-radius: 0.5rem; font-family: monospace; font-weight: 600; letter-spacing: 0.05em;">
+                            O(H)
+                        </div>
+                    </div>
+                </div>
+
+                <h3 style="font-size: 1.125rem; font-weight: 600; color: white; margin-bottom: 0.75rem;">How it works</h3>
+                <p style="font-size: 0.875rem; color: #94a3b8; line-height: 1.6; margin-bottom: 1.5rem;">
+                    Depth-First Search (DFS) explores the tree as deeply as possible along each branch before backtracking. It uses <span style="color: #c084fc; font-weight: 600;">Recursion</span> to visit nodes.
+                </p>
+
                 <div style="display: flex; flex-direction: column; gap: 1rem;">
                     <div>
                         <p style="color: #f472b6; font-size: 0.75rem; font-weight: bold; margin-bottom: 0.25rem;">1. Pre-order (Root, L, R)</p>
-                        <div style="background: #0f172a; padding: 0.75rem; border-radius: 0.5rem; border: 1px solid #1e293b; font-family: monospace; font-size: 0.75rem; color: #4ade80;">
+                        <div style="background: rgba(0, 0, 0, 0.3); padding: 0.75rem; border-radius: 0.5rem; border: 1px solid rgba(52, 211, 153, 0.2); font-family: monospace; font-size: 0.75rem; color: #34d399;">
                             void PreOrder(node):<br>
                             &nbsp;&nbsp;if (node == null) return<br>
                             &nbsp;&nbsp;<span style="color: #fbbf24;">print node.val</span><br>
@@ -111,7 +126,7 @@
 
                     <div>
                         <p style="color: #60a5fa; font-size: 0.75rem; font-weight: bold; margin-bottom: 0.25rem;">2. In-order (L, Root, R)</p>
-                        <div style="background: #0f172a; padding: 0.75rem; border-radius: 0.5rem; border: 1px solid #1e293b; font-family: monospace; font-size: 0.75rem; color: #4ade80;">
+                        <div style="background: rgba(0, 0, 0, 0.3); padding: 0.75rem; border-radius: 0.5rem; border: 1px solid rgba(52, 211, 153, 0.2); font-family: monospace; font-size: 0.75rem; color: #34d399;">
                             void InOrder(node):<br>
                             &nbsp;&nbsp;if (node == null) return<br>
                             &nbsp;&nbsp;InOrder(node.left)<br>
@@ -122,7 +137,7 @@
 
                     <div>
                         <p style="color: #c084fc; font-size: 0.75rem; font-weight: bold; margin-bottom: 0.25rem;">3. Post-order (L, R, Root)</p>
-                        <div style="background: #0f172a; padding: 0.75rem; border-radius: 0.5rem; border: 1px solid #1e293b; font-family: monospace; font-size: 0.75rem; color: #4ade80;">
+                        <div style="background: rgba(0, 0, 0, 0.3); padding: 0.75rem; border-radius: 0.5rem; border: 1px solid rgba(52, 211, 153, 0.2); font-family: monospace; font-size: 0.75rem; color: #34d399;">
                             void PostOrder(node):<br>
                             &nbsp;&nbsp;if (node == null) return<br>
                             &nbsp;&nbsp;PostOrder(node.left)<br>

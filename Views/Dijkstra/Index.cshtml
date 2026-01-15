@@ -115,8 +115,50 @@
                      Ready to generate graph.
                  </div>
             </div>
+
+            <div style="border-top: 1px solid rgba(255, 255, 255, 0.1); padding-top: 1rem;">
+                <h3 style="font-size: 1.125rem; font-weight: 600; color: white; margin-bottom: 0.75rem;">How it works</h3>
+                <p style="font-size: 0.875rem; color: #94a3b8; line-height: 1.6; margin-bottom: 1.5rem;">
+                    Dijkstra's Algorithm finds the shortest path from a start node to a target node in a weighted graph. It uses a <span style="color: #60a5fa; font-weight: 600;">Greedy</span> approach, always expanding the unvisited node with the smallest known distance.
+                </p>
+
+                <h3 style="font-size: 1.125rem; font-weight: 600; color: white; margin-bottom: 1rem;">Complexity Analysis</h3>
+                
+                <div style="margin-bottom: 1.5rem;">
+                    <div style="margin-bottom: 1rem;">
+                        <p style="color: #94a3b8; font-size: 0.875rem; margin-bottom: 0.5rem;">Time Complexity:</p>
+                        <div style="display: inline-block; background: rgba(139, 92, 246, 0.2); border: 1px solid rgba(139, 92, 246, 0.5); color: #e9d5ff; padding: 0.5rem 1rem; border-radius: 0.5rem; font-family: monospace; font-weight: 600; letter-spacing: 0.05em;">
+                            O(E log V)
+                        </div>
+                    </div>
+                    
+                    <div style="margin-bottom: 1rem;">
+                        <p style="color: #94a3b8; font-size: 0.875rem; margin-bottom: 0.5rem;">Space Complexity:</p>
+                        <div style="display: inline-block; background: rgba(244, 63, 94, 0.2); border: 1px solid rgba(244, 63, 94, 0.5); color: #fecdd3; padding: 0.5rem 1rem; border-radius: 0.5rem; font-family: monospace; font-weight: 600; letter-spacing: 0.05em;">
+                            O(V + E)
+                        </div>
+                    </div>
+                </div>
+
+                <div style="background: rgba(0, 0, 0, 0.3); padding: 1rem; border-radius: 0.5rem; font-family: 'Courier New', monospace; font-size: 0.8rem; color: #34d399; line-height: 1.6; border: 1px solid rgba(52, 211, 153, 0.2);">
+                    function Dijkstra(start, target):<br/>
+                    &nbsp;&nbsp;dist[start] = 0<br/>
+                    &nbsp;&nbsp;priority_queue Q.push(start)<br/>
+                    <br/>
+                    &nbsp;&nbsp;while Q is not empty:<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;u = Q.extractMin()<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;if u == target: return dist[u]<br/>
+                    <br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;for each neighbor v of u:<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;alt = dist[u] + weight(u, v)<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if alt < dist[v]:<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;dist[v] = alt<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;prev[v] = u<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Q.decreaseKey(v, alt)
+                </div>
+            </div>
             
-            <div style="display: flex; justify-content: space-between; font-size: 0.75rem; color: #64748b;">
+            <div style="display: flex; justify-content: space-between; font-size: 0.75rem; color: #64748b; margin-top: 1rem;">
                 <span>Total Nodes: <span id="nodeCountDisplay">0</span></span>
                 <span>Total Edges: <span id="edgeCountDisplay">0</span></span>
             </div>

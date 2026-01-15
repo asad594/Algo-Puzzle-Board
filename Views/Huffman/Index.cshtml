@@ -91,6 +91,48 @@
                     <span id="compressedSize" style="color: #4ade80; font-weight: 600;">0 bits</span>
                 </div>
             </div>
+
+            <div style="border-top: 1px solid rgba(255, 255, 255, 0.1); padding-top: 1rem; margin-top: 1rem;">
+                <h3 style="font-size: 1.125rem; font-weight: 600; color: white; margin-bottom: 0.75rem;">How it works</h3>
+                <p style="font-size: 0.875rem; color: #94a3b8; line-height: 1.6; margin-bottom: 1.5rem;">
+                    Huffman Coding is a lossless data compression algorithm. It assigns variable-length codes to characters, with shorter codes for more frequent characters, using a <span style="color: #f472b6; font-weight: 600;">Greedy</span> approach to build an optimal prefix tree.
+                </p>
+
+                <h3 style="font-size: 1.125rem; font-weight: 600; color: white; margin-bottom: 1rem;">Complexity Analysis</h3>
+                
+                <div style="margin-bottom: 1.5rem;">
+                    <div style="margin-bottom: 1rem;">
+                        <p style="color: #94a3b8; font-size: 0.875rem; margin-bottom: 0.5rem;">Time Complexity:</p>
+                        <div style="display: inline-block; background: rgba(139, 92, 246, 0.2); border: 1px solid rgba(139, 92, 246, 0.5); color: #e9d5ff; padding: 0.5rem 1rem; border-radius: 0.5rem; font-family: monospace; font-weight: 600; letter-spacing: 0.05em;">
+                            O(N log N)
+                        </div>
+                    </div>
+                    
+                    <div style="margin-bottom: 1rem;">
+                        <p style="color: #94a3b8; font-size: 0.875rem; margin-bottom: 0.5rem;">Space Complexity:</p>
+                        <div style="display: inline-block; background: rgba(244, 63, 94, 0.2); border: 1px solid rgba(244, 63, 94, 0.5); color: #fecdd3; padding: 0.5rem 1rem; border-radius: 0.5rem; font-family: monospace; font-weight: 600; letter-spacing: 0.05em;">
+                            O(N)
+                        </div>
+                    </div>
+                </div>
+
+                <div style="background: rgba(0, 0, 0, 0.3); padding: 1rem; border-radius: 0.5rem; font-family: 'Courier New', monospace; font-size: 0.8rem; color: #34d399; line-height: 1.6; border: 1px solid rgba(52, 211, 153, 0.2);">
+                    function buildHuffman(text):<br/>
+                    &nbsp;&nbsp;count freq of each char<br/>
+                    &nbsp;&nbsp;create leaf node for each char<br/>
+                    &nbsp;&nbsp;priority_queue Q = all nodes<br/>
+                    <br/>
+                    &nbsp;&nbsp;while Q.size() > 1:<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;left = Q.extractMin()<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;right = Q.extractMin()<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;newNode = (left.freq + right.freq)<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;newNode.left = left<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;newNode.right = right<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;Q.insert(newNode)<br/>
+                    <br/>
+                    &nbsp;&nbsp;return Q.extractMin() // Root
+                </div>
+            </div>
         </div>
     </div>
 </div>

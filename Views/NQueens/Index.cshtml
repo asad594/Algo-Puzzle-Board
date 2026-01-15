@@ -134,14 +134,41 @@
 
             <div style="border-top: 1px solid rgba(255, 255, 255, 0.1); padding-top: 1rem;">
                 <h3 style="font-size: 1.125rem; font-weight: 600; color: white; margin-bottom: 0.75rem;">How it works</h3>
-                <p style="font-size: 0.875rem; color: #94a3b8; line-height: 1.6; margin-bottom: 0.75rem;">
-                    The algorithm places queens column by column. If a placement leads to a conflict, it
-                    <span style="color: #f87171; font-weight: 600;">backtracks</span> to the previous step.
+                <p style="font-size: 0.875rem; color: #94a3b8; line-height: 1.6; margin-bottom: 1.5rem;">
+                    The N-Queens puzzle challenges you to place N queens on an N×N chessboard so that no two queens attack each other. This algorithm uses <span style="color: #a78bfa; font-weight: 600;">Backtracking</span> to systematically explore valid placements, retracing its steps whenever a conflict prevents a solution.
                 </p>
-                <div style="background: rgba(0, 0, 0, 0.3); padding: 0.75rem; border-radius: 0.5rem; font-family: 'Courier New', monospace; font-size: 0.75rem; color: #34d399; line-height: 1.6;">
-                    isSafe(row, col) → Checks if queen is attacked<br/>
-                    solve(row) → Try all cols for this row<br/>
-                    recurse → solve(row + 1)
+                
+                <h3 style="font-size: 1.125rem; font-weight: 600; color: white; margin-bottom: 1rem;">Complexity Analysis</h3>
+                
+                <div style="margin-bottom: 1.5rem;">
+                    <div style="margin-bottom: 1rem;">
+                        <p style="color: #94a3b8; font-size: 0.875rem; margin-bottom: 0.5rem;">Time Complexity:</p>
+                        <div style="display: inline-block; background: rgba(139, 92, 246, 0.2); border: 1px solid rgba(139, 92, 246, 0.5); color: #e9d5ff; padding: 0.5rem 1rem; border-radius: 0.5rem; font-family: monospace; font-weight: 600; letter-spacing: 0.05em;">
+                            O(N!)
+                        </div>
+                    </div>
+                    
+                    <div style="margin-bottom: 1rem;">
+                        <p style="color: #94a3b8; font-size: 0.875rem; margin-bottom: 0.5rem;">Space Complexity:</p>
+                        <div style="display: inline-block; background: rgba(244, 63, 94, 0.2); border: 1px solid rgba(244, 63, 94, 0.5); color: #fecdd3; padding: 0.5rem 1rem; border-radius: 0.5rem; font-family: monospace; font-weight: 600; letter-spacing: 0.05em;">
+                            O(N)
+                        </div>
+                    </div>
+                </div>
+
+                <div style="background: rgba(0, 0, 0, 0.3); padding: 1rem; border-radius: 0.5rem; font-family: 'Courier New', monospace; font-size: 0.8rem; color: #34d399; line-height: 1.6; border: 1px solid rgba(52, 211, 153, 0.2);">
+                    function solveQueen(row):<br/>
+                    &nbsp;&nbsp;if row == N:<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;return true // All queens placed<br/>
+                    <br/>
+                    &nbsp;&nbsp;for col from 0 to N-1:<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;if isSafe(row, col):<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;board[row][col] = 1<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if solveQueen(row + 1):<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return true<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;board[row][col] = 0 // BACKTRACK<br/>
+                    <br/>
+                    &nbsp;&nbsp;return false
                 </div>
             </div>
         </div>
