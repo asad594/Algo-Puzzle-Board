@@ -1,6 +1,6 @@
 # 🧩 Algo Puzzle Board
 
-An interactive **Data Structures & Algorithms visualization platform** designed to make learning DSA intuitive, visual, and engaging. This project focuses on helping students and developers *see algorithms in action* rather than just reading theory.
+**Group Project** — Developed collaboratively as part of a Data Structures & Algorithms designed to make learning DSA intuitive, visual, and engaging. This project focuses on helping students and developers *see algorithms in action* rather than just reading theory.
 
 🔗 **Live Demo:** https://algo-puzzle-board-production-d547.up.railway.app/
 
@@ -45,8 +45,9 @@ An interactive **Data Structures & Algorithms visualization platform** designed 
 
 ## 🛠️ Tech Stack
 
-- **Frontend:** HTML, CSS, JavaScript  
-- **Logic & Visualization:** Vanilla JavaScript  
+- **Algorithm Implementation:** C#  
+- **Logic & Problem Solving:** Data Structures & Algorithms (C#)  
+- **Frontend & Visualization:** HTML, CSS, JavaScript  
 - **Deployment:** Railway  
 
 ---
@@ -54,7 +55,7 @@ An interactive **Data Structures & Algorithms visualization platform** designed 
 ## 🎯 Purpose of the Project
 
 This project was built to:
-- Strengthen my understanding of **DSA concepts**
+- Strengthen our understanding of **DSA concepts**
 - Help others visualize how algorithms actually work
 - Create an interview-prep friendly learning tool
 - Practice clean UI + logical problem solving
@@ -64,7 +65,7 @@ This project was built to:
 ## 📂 Repository
 
 🔗 **GitHub Repository:**  
-👉 *Add your repository link here*
+👉 *https://github.com/asad594/Algo-Puzzle-Board*
 
 ---
 
@@ -85,11 +86,12 @@ Feel free to fork the repo and raise a pull request.
 
 ---
 
-## 🙌 Author
+## 🙌 Authors
 
-**Muhammad Abdullah**  
-💻 Software Engineering Student  
-📫 Connect with me on LinkedIn
+**Muhammad Abdullah** 
+**Muhammad Asad**  
+**Urooba Batool**  
+**Shadaq Abdul Samad**  
 
 ---
 
