@@ -1,86 +1,196 @@
-# AlgoPuzzleBoard MVC
-ASP.NET Core MVC application with C# backend for algorithm visualizations.
+# 🧩 Algo Puzzle Board
 
-## Running the Application in Visual Studio Code
-### Using Terminal
-Open Terminal in VS Code (`Ctrl + ` `)
+[![C#](https://img.shields.io/badge/Language-C%23-239120?style=for-the-badge&logo=csharp&logoColor=white)](https://learn.microsoft.com/en-us/dotnet/csharp/)
+[![Framework](https://img.shields.io/badge/Framework-ASP.NET%20Core%20MVC-512BD4?style=for-the-badge&logo=dotnet&logoColor=white)](https://dotnet.microsoft.com/)
+[![Deployment](https://img.shields.io/badge/Deployment-Railway-0B0D0E?style=for-the-badge&logo=railway&logoColor=white)](https://railway.app)
+[![Live Demo](https://img.shields.io/badge/Live-Demo-brightgreen?style=for-the-badge)](https://algo-puzzle-board-production-d547.up.railway.app/)
 
-Navigate to project directory (if not already there):
+An interactive web application designed to make learning **Data Structures & Algorithms (DSA)** intuitive, visual, and highly engaging. By processing complex algorithm states in a high-performance **C# backend** and rendering real-time step-by-step animations in the frontend, this tool helps students and developers see algorithms in action rather than just reading theory.
 
-```bash
-cd "c:\Users\RB Tech\Desktop\MVC\AlgoPuzzleBoard.MVC"
+---
+
+<p align="center">
+  <img src="assets/banner.png" alt="Algo Puzzle Board Banner" width="100%">
+</p>
+
+---
+
+## 🗺️ Navigation Index
+
+1. [🚀 Live Demo](#-live-demo)
+2. [✨ Core Features](#-core-features)
+3. [🏗️ Application Architecture](#%EF%B8%8F-application-architecture)
+4. [📚 Algorithms & Concepts Catalog](#-algorithms--concepts-catalog)
+5. [🖥️ Technical Architecture & Folder Structure](#%EF%B8%8F-technical-architecture--folder-structure)
+6. [🔌 API Endpoints](#-api-endpoints)
+7. [⚙️ How to Run Locally](#%EF%B8%8F-how-to-run-locally)
+8. [🤝 Contribution guidelines](#-contributions)
+9. [👥 Authors & Contributors](#-authors)
+
+---
+
+## 🔗 Live Demo
+
+Experience the animations live:
+👉 [Algo Puzzle Board on Railway](https://algo-puzzle-board-production-d547.up.railway.app/)
+
+---
+
+## ✨ Core Features
+
+- **🎮 20+ Algorithm Visualizations:** Interactive simulations of puzzles, graphs, sorting, and data structure operations.
+- **⚡ Real-time Step Animations:** Step-by-step control variables rendered dynamically in the UI.
+- **🧠 Full C# Logic Solver:** 100% of calculations (including backtracking, shortest paths, and sort partitions) are solved in the backend to ensure performance and logical correctness.
+- **🖱️ Click-based Puzzle Solvers:** Interact with boards (like placing chess queens or tracking knight steps) and see C# verify states live.
+
+---
+
+## 🏗️ Application Architecture
+
+The system uses a fast C# controller API coupled with dynamic frontend rendering:
+
+```mermaid
+flowchart TD
+    subgraph Browser ["Client UI (HTML5 / CSS3 / JS)"]
+        UI["User Interface (Razor Views)"]
+        Event["Interaction Events (Click / Setup)"]
+        Anim["Visualizer Renderer (AJAX/JS Animations)"]
+    end
+
+    subgraph Server ["ASP.NET Core MVC Backend (.NET 9.0)"]
+        Control["API Controllers (JSON routing)"]
+        subgraph Services ["C# Algorithm Services"]
+            Backtrack["Backtracking (N-Queens, Knight's Tour)"]
+            Sort["Sorting (Bubble, Quick, Merge, Heap)"]
+            Graph["Graphs (Dijkstra, BFS, DFS, Kruskal's)"]
+        end
+    end
+
+    UI --> Event
+    Event -- "AJAX POST (Request Payload)" --> Control
+    Control --> Services
+    Services -- "Calculate & Return Step Matrices" --> Control
+    Control -- "JSON Output" --> Anim
 ```
-Run the application:
 
-```bash
-dotnet run
-```
-Open your browser and navigate to:
+---
 
-[http://localhost:5024](http://localhost:5024)
+## 📚 Algorithms & Concepts Catalog
 
-Stop the application: Press `Ctrl + C` in the terminal
+Explore the catalog of algorithm implementations:
 
-### Using VS Code Debugger
-1. Press `F5` or click **Run > Start Debugging**
-2. Select **.NET Core** when prompted
-3. The application will start and browser will open automatically
+<details>
+<summary>🔢 1. Sorting Algorithms</summary>
 
-## Project Structure
+- 🟩 **Bubble Sort:** Simple swap operations visualizer.
+- 🔧 **Selection Sort:** Dynamic minimum item search.
+- 🔧 **Insertion Sort:** Insertion loop visualizations.
+- 🔧 **Merge Sort:** Divide-and-conquer segmentation logs.
+- 🔧 **Quick Sort:** Pivot selection and list splits.
+</details>
+
+<details>
+<summary>🌲 Data Structures</summary>
+
+- 🔧 **Linear Arrays:** Access, search, and dynamic inserts.
+- 🔧 **Stacks & Queues:** Visualized LIFO / FIFO queue entries.
+- 🔧 **Linked Lists:** Pointer navigation tracking.
+- 🔧 **Trees:** Binary Search Trees (BST), Min/Max Heap structural conversions.
+</details>
+
+<details>
+<summary>🌐 Graph Algorithms</summary>
+
+- 🔧 **BFS (Breadth-First Search):** Level-order search visuals.
+- 🔧 **DFS (Depth-First Search):** Stack-based deep node traversal.
+- 🔧 **Dijkstra's Shortest Path:** Node-by-node pathfinding metrics.
+- 🔧 **Minimum Spanning Trees:** Kruskal's and Prim's algorithm states.
+</details>
+
+<details>
+<summary>♟️ Puzzle & Backtracking Problems (Fully Visualized)</summary>
+
+- 🟩 **N-Queens Problem:** Backtracking visual solver placing N non-attacking queens on a grid.
+- 🟩 **Knight's Tour:** Visualizing Warnsdorff's heuristic for board traversal.
+- 🟩 **Graph Coloring:** Dynamic node coloring solver minimizing overlaps.
+</details>
+
+*Legend: 🟩 Fully Implemented Visualizer | 🔧 C# Backend Ready / Logic Service completed.*
+
+---
+
+## 🖥️ Technical Architecture & Folder Structure
+
 ```text
 AlgoPuzzleBoard.MVC/
-├── Controllers/          # C# API Controllers
-├── Services/            # C# Algorithm Implementations (ALL ALGORITHMS IN C#)
-├── Models/              # Data models
-├── Views/               # Razor views (HTML)
-├── wwwroot/
-│   ├── css/            # Stylesheets
-│   └── js/             # JavaScript (UI only)
-└── Program.cs          # App entry point
+├── Controllers/          # C# API Controllers (Maps HTTP JSON actions)
+├── Services/             # C# Algorithm Services (Solves pathfinding, sorting, & puzzles)
+├── Models/               # Core data structures and exchange models
+├── Views/                # Razor View templates (Generates initial page containers)
+├── wwwroot/              # Client assets
+│   ├── css/              # Glassmorphic layout styling rules
+│   └── js/               # AJAX network queries and visual animation drivers
+├── Dockerfile            # Container definition for cloud deployments
+└── Program.cs            # ASP.NET Application setup and entry point
 ```
 
-## Features
-### Fully Implemented
-✅ **N-Queens** - Backtracking algorithm visualization  
-✅ **Knight's Tour** - Warnsdorff's heuristic  
-✅ **Graph Coloring** - Greedy coloring (basic)  
+---
 
-### C# Backend Ready
-🔧 **TSP** - Nearest neighbor + 2-opt optimization  
-🔧 **Huffman Coding** - Tree construction and encoding  
-🔧 **Pathfinding** - Dijkstra, BFS, DFS, Prim's, Kruskal's
-🔧 **Sorting** - Quick, Merge, Heap, Radix, Bubble
-🔧 **Search** - Linear, Binary, Interpolation
-🔧 **Trees** - BST, Min Heap, Max Heap
+## 🔌 API Endpoints
 
-## Technology Stack
-*   **Backend**: ASP.NET Core MVC (.NET 9.0)
-*   **Algorithms**: 100% C# (in `Services/`)
-*   **Frontend**: HTML, CSS, JavaScript (UI interactions only)
-*   **Design**: Glassmorphism with modern gradients
+All services communicate using async HTTP POST queries returning JSON objects:
 
-## API Endpoints
-All algorithms run in C# and return JSON:
+*   `POST /NQueens/Solve` - Solves backtracking layout states.
+*   `POST /KnightsTour/SolveTour` - Traces the Warnsdorff heuristic path.
+*   `POST /GraphColoring/SolveColoring` - Processes coloring nodes.
+*   `POST /TSP/SolveTSP` - Generates optimized Traveling Salesperson route.
+*   `POST /Huffman/BuildTree` - Formulates Huffman prefix maps.
 
-*   `POST /NQueens/Solve` - Returns backtracking solution steps
-*   `POST /KnightsTour/SolveTour` - Returns tour path
-*   `POST /GraphColoring/GenerateGraph` - Generates random graph
-*   `POST /GraphColoring/SolveColoring` - Returns colored graph
-*   `POST /TSP/SolveTSP` - Returns optimized tour
-*   `POST /Huffman/BuildTree` - Returns Huffman tree and codes
+---
 
-## Development
-### Build
-```bash
-dotnet build
-```
-### Clean
-```bash
-dotnet clean
-```
-### Watch (auto-reload on changes)
-```bash
-dotnet watch run
-```
+## ⚙️ How to Run Locally
 
-> **Note**: All algorithm logic is implemented in C# backend services. JavaScript is only used for UI interactions and calling the C# APIs via AJAX.
+### Prerequisites
+- Install [.NET 9.0 SDK](https://dotnet.microsoft.com/download)
+
+### Run Steps
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/asad594/Algo-Puzzle-Board.git
+   cd Algo-Puzzle-Board/AlgoPuzzleBoard.MVC
+   ```
+
+2. **Compile the solution:**
+   ```bash
+   dotnet build
+   ```
+
+3. **Launch the application:**
+   ```bash
+   dotnet run
+   ```
+
+4. **Access the interface:**
+   Open your browser and navigate to:
+   [http://localhost:5024](http://localhost:5024)
+
+---
+
+## 🤝 Contributions
+
+Contributions, feature requests, and UI recommendations are welcome!
+Feel free to fork the repository, make your modifications on a feature branch, and submit a Pull Request.
+
+---
+
+## 👥 Authors
+
+This collaborative project was built by:
+- **Muhammad Abdullah**
+- **Muhammad Asad** ([@asad594](https://github.com/asad594))
+- **Urooba Batool**
+- **Shadaq Abdul Samad**
+
+---
+
+⭐ *If you find this project helpful for learning, don't forget to star the repository!*
